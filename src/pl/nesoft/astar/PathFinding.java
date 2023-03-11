@@ -18,6 +18,7 @@ public class PathFinding {
 	private final List<Node> visited = new ArrayList<>();
 
 	public List<Node> findPath(Point startPosition, Point targetPosition) {
+		long startMs = System.currentTimeMillis();
 		Node startNode = new Node(startPosition, null);
 		notVisited.add(startNode);
 
@@ -31,6 +32,7 @@ public class PathFinding {
 				}
 
 				if (successor.getPosition().equals(targetPosition)) {
+					System.out.println("findPath executed in "+ (System.currentTimeMillis() - startMs)+ " ms");
 					return createPath(currentNode, targetPosition);
 				}
 
